@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/', function () {
-    $tasks =DB::table('tasks')->get(); 
-    return view('welcome')->with('tasks',$tasks);
+Route::get('/','TaskController@tasks');
+Route::get('task/{id}','TaskController@show');
+
+Route::get('chid',function(){
+    return view('Task.child');
+
 });
+
