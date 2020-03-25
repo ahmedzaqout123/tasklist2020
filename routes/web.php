@@ -13,11 +13,9 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/','TaskController@tasks');
+Route::get('/','TaskController@index');
+
 Route::get('task/{id}','TaskController@show');
 
-Route::get('chid',function(){
-    return view('Task.child');
 
-});
-
+Route::post('store','Taskcontroller@store');

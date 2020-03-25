@@ -7,13 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    @foreach($tasks as $task)
-  
-    @if($task->id==$id)
-    <h2>{{$task->task }}</h2>
-    @endif
-    @endforeach
-
+   <h2>{{$task->name}}</h2>
+   
 
 </body>
 </html>

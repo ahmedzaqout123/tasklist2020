@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
-    public function tasks()
+    public function index()
     {
         $tasks =DB::table('tasks')->get(); 
-        return view('Task.welcome')->with([
+        return view('Task.index')->with([
             'tasks'=>$tasks,
           
         ]);
@@ -20,10 +20,24 @@ class TaskController extends Controller
     }
 public function show($id)
     {
-        $tasks =DB::table('tasks')->get(); 
-        return view('Task.show')->with([
-            'tasks'=>$tasks,
-            'id'=>$id
-        ]);
+        $task =DB::table('tasks')->find($id); 
+        return view('Task.show',compact('task'));
+        
+    }
+    public function store(Request $request){
+     
+        // dd($request);
+        $task =DB::table('tasks')->insert([
+
+'name'=>$request->name,
+'created_at' => now(),
+'upload_at' => now(),
+
+
+        ]
+        ); 
+        return redirect()->back();
+
+
     }
 }
