@@ -31,7 +31,7 @@ public function show($id)
 
 'name'=>$request->name,
 'created_at' => now(),
-'upload_at' => now(),
+'updated_at' => now(),
 
 
         ]
@@ -40,4 +40,32 @@ public function show($id)
 
 
     }
+    public function destroy($id){
+        $task =DB::table('tasks')->where ('id','=',$id)->delete();
+        return redirect()->back();
+
+    }
+    public function edit($id){
+        $tt =DB::table('tasks')->find($id); 
+
+        $tasks =DB::table('tasks')->get(); 
+        
+        return view('Task.edit',compact('tasks','tt'));
+              
+              
+
+
+    }
+    public function update(Request $request,$id){
+        
+      
+       $affected = DB::table('tasks')-> where('id', $id)->update(['name'=>$request->name,
+       'created_at' => now(),
+       'updated_at' => now(),]);
+       return redirect('/');
+
+
+        
+    }
+
 }
