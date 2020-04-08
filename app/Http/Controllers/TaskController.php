@@ -72,14 +72,14 @@ public function show($id)
     //    'updated_at' => now(),]);
     //    return redirect('/');
 
-    $request->validate([
-        'name' =>'required|min:5|max:255',
-      ]);
+        $request->validate([
+            'name' =>'required|min:5|max:255',
+        ]);
 
-      Task::where('id',$id)->update(['name'=> $request->name]);
-      return redirect('/');
+        Task::where('id',$id)->update(['name'=> $request->name]);
+        return redirect('/');
 
-        
-    }
+            
+        }
 
 }

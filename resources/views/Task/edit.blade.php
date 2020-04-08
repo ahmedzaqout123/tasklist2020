@@ -23,7 +23,7 @@
                </ul>
            </div>
            @endif
-        <form action="update/{{$tt->id}}" method="POST" class="form-horizontal">
+        <form action="{{url('update/'.$tt->id)}}" method="POST" class="form-horizontal">
                 @csrf 
                 @method('PATCH')
 
@@ -32,7 +32,7 @@
                     <label for="task-name" class="col-sm-3 control-label">Task</label>
 
                     <div class="col-sm-6">
-                        <input type="text" name="name" id="task-name" class="form-control" value="{{ $tt->name}}  ">
+                        <input type="text" name="name" id="task-name" class="form-control" value="{{$tt->name}}  ">
                     </div>
                 </div>
 
