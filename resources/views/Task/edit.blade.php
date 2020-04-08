@@ -14,8 +14,19 @@
         <div class="panel-body">
             <!-- Display Validation Errors -->
             <!-- New Task Form -->
+            @if ($errors->any())
+            <div class="alert alert-danger" >
+               <ul>
+                   @foreach ($errors->all() as $error)
+                   <li>{{$error}}</li>
+                   @endforeach
+               </ul>
+           </div>
+           @endif
         <form action="update/{{$tt->id}}" method="POST" class="form-horizontal">
                 @csrf 
+                @method('PATCH')
+
                 <!-- Task Name -->
                 <div class="form-group">
                     <label for="task-name" class="col-sm-3 control-label">Task</label>
@@ -66,7 +77,6 @@
                             <td>
                                 <form action="edit/{{$task->id}}" method="POST">
                                     @csrf
-                                    {{-- @method('UPDATE') --}}
                                     <button type="submit" class="btn btn-danger">
                                         <i class="fa fa-btn fa-trash"></i>edit
                                     </button>

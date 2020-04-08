@@ -11,9 +11,36 @@
             New Task
         </div>
 
+        {{-- @if(isset($user))
+        {{ Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'PUT']) }}
+    @else
+        {{ Form::open(['route' => 'user.store', 'method' => 'POST']) }}
+    @endif
+    
+    // fields
+    
+    {{ Form::close() }}
+ --}}
+
+
+
+
+
+
+        
         <div class="panel-body">
             <!-- Display Validation Errors -->
             <!-- New Task Form -->
+            @if ($errors->any())
+            <div class="alert alert-danger" >
+               <ul>
+                   @foreach ($errors->all() as $error)
+                   <li>{{$error}}</li>
+                   @endforeach
+               </ul>
+           </div>
+           @endif
+
             <form action="store" method="POST" class="form-horizontal">
                 @csrf 
                 <!-- Task Name -->
@@ -21,7 +48,7 @@
                     <label for="task-name" class="col-sm-3 control-label">Task</label>
 
                     <div class="col-sm-6">
-                        <input type="text" name="name" id="task-name" class="form-control" value="">
+                        <input type="text" name="name" id="task-name" class="form-control" value="" >
                     </div>
                 </div>
 
@@ -64,9 +91,10 @@
                                 </form>
                             </td>
                             <td>
-                                <form action="edit/{{$task->id}}" method="POST">
+                                <form action="edit/{{$task->id}}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    {{-- @method('UPDATE') --}}
+                                    @method('PUT')
+
                                     <button type="submit" class="btn btn-danger">
                                         <i class="fa fa-btn fa-trash"></i>edit
                                     </button>

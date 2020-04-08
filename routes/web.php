@@ -20,7 +20,10 @@ Route::get('task/{id}','TaskController@show');
 
 Route::post('store','Taskcontroller@store');
 Route::delete('delete/{id}','Taskcontroller@destroy');
-Route::post('edit/{id}','Taskcontroller@edit');
-Route::post('edit/update/{id}','Taskcontroller@update');
+Route::put('edit/{id}','Taskcontroller@edit');
+Route::patch('update/{id}','Taskcontroller@update');
 
-// Route::put('task/{id}','Taskcontroller@edit');
+
+
+
+
